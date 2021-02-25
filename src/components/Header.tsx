@@ -8,6 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function Header({ title, showCancel = true }: HeaderProps) {
     const navigation = useNavigation();
+
     function handleClose() {
         navigation.navigate('home')
     }
@@ -21,19 +22,16 @@ export default function Header({ title, showCancel = true }: HeaderProps) {
             </BorderlessButton>
 
             <Text style={styles.title}>Header</Text>
-
             {showCancel ? (
-                        <BorderlessButton
-                            onPress={handleClose}
-                        >
-                        <Feather name="x" size={20} color="#a100ff" />
-                        </BorderlessButton>
-                        ) 
-                        : (
-                           null
-                        )}
-
-
+                <BorderlessButton
+                    onPress={handleClose}
+                >
+                    <Feather name="x" size={20} color="#a100ff" />
+                </BorderlessButton>
+            )
+                : (
+                    <View></View>
+                )}
         </View>
     );
 }
@@ -52,12 +50,5 @@ const styles = StyleSheet.create({
     title: {
         color: '#797979',
         fontSize: 18
-    },
-    returnButton: {
-        flexDirection: 'row',
-        alignItems: 'center',
-    },
-    textReturnButton: {
-
     }
 })
